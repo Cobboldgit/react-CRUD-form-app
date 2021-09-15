@@ -13,12 +13,26 @@ function App() {
   function AddUser(user) {
     setUsers([...users, user])
   }
+
+ 
+  //function to delete a user
+  function delectUser(userId) {
+    //loops through the users state and removes the user with the same id
+    const filteredList = users.filter((user) => {
+      return userId !== user.id;
+    });
+
+    //sets the users state to the filtered users array
+    setUsers(filteredList);
+  }
+
+
   return (
     <>
     <div className="App">
       <div className="container">
         <UserInput addUser={AddUser}/>
-        <UserList data={users}/>
+        <UserList data={users} delectUser={delectUser}/>
       </div>
     </div>
     </>

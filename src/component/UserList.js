@@ -1,23 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import User from "./User";
 
-class UserList extends Component {
-    render() {
-        const users = this.props.data
+function UserList(props) {
+    const users = props.data;
+  return (
+    <div>
+      {users.map((user, index) => {
         return (
-                users.map((user, index)=>{
-                    return(
-                        <div className="list">
-                            <div key={index}>
-                                <p>Name: {user.name}</p>
-                                <p>Email: {user.email}</p>
-                                <p>Gen: {user.gen}</p>
-                        </div>
-                        </div>
-                    )
-                })
-            
-        )
-    }
+          <div>
+            <User
+              user={user}
+              key={user.id}
+              delectUser={props.delectUser}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 }
+
 
 export default UserList;

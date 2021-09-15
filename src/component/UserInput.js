@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import '../App.css'
+import '../App.css';
+import {v4 as uuid} from 'uuid';
 
 class UserInput extends Component {
   constructor(props) {
@@ -14,19 +15,26 @@ class UserInput extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    let user = {
+    if(this.state.email && this.state.name && this.state.gen) {
+      let user = {
       name: this.state.name,
       email: this.state.email,
       gen: this.state.gen,
-    };
+      id: uuid()
+      };
+      this.props.addUser(user);
 
-    this.props.addUser(user);
-
-    this.setState({
+      this.setState({
       name: "",
       email: "",
       gen: ""
     });
+    }
+    
+
+    
+
+    
   };
 
   render() {
