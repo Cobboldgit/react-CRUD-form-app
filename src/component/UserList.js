@@ -7,7 +7,7 @@ function UserList(props) {
     <div>
       {users.map((user, index) => {
         return (
-          <div>
+          <div key={index}>
             <User
               user={user}
               key={user.id}
