@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-import UserInput from './component/UserInput';
-import UserList from './component/UserList';
-import './App.css'
-import FuncUserForm from './component/FuncUserForm';
-import FuncUserList from './component/FuncUserList';
-
-
+import React, { useState } from "react";
+import UserInput from "./component/UserInput";
+import UserList from "./component/UserList";
+import "./App.css";
+// import FuncUserForm from './component/FuncUserForm';
+// import FuncUserList from './component/FuncUserList';
 
 function App() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   function AddUser(user) {
-    setUsers([...users, user])
+    setUsers([...users, user]);
   }
 
- 
   //function to delete a user
   function delectUser(userId) {
     //loops through the users state and removes the user with the same id
@@ -26,15 +23,26 @@ function App() {
     setUsers(filteredList);
   }
 
+  const editUser = (newUser, userId) => {
+    setUsers(
+      users.map((user) => {
+        if (userId === user.id) {
+          return newUser;
+        } else {
+          return user;
+        }
+      })
+    );
+  };
 
   return (
     <>
-    <div className="App">
-      <div className="container">
-        <UserInput addUser={AddUser}/>
-        <UserList data={users} delectUser={delectUser}/>
+      <div className="App">
+        <div className="container">
+          <UserInput addUser={AddUser} />
+          <UserList data={users} delectUser={delectUser} editUser={editUser} />
+        </div>
       </div>
-    </div>
     </>
   );
 }

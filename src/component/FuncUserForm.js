@@ -1,4 +1,3 @@
-import React, { Component, useState } from "react";
 import '../App.css'
 
 function FuncUserForm (props) {
