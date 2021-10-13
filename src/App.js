@@ -40,7 +40,7 @@ function App() {
       <div className="App">
         <div className="container">
           <UserInput/>
-          <UserList data={users} delectUser={delectUser} editUser={editUser} />
+          <UserList delectUser={delectUser} editUser={editUser} />
         </div>
       </div>
     </>
