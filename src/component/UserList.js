@@ -1,8 +1,8 @@
 import User from "./User";
-import { connect} from "react-redux"
+import { connect } from "react-redux";
 
 function UserList(props) {
-    const users = props.data;
+  const users = props.users;
   return (
     <div>
       {users.map((user, index) => {
@@ -22,10 +22,9 @@ function UserList(props) {
 }
 
 const mapStateToProps = (state) => {
-  return{
+  return {
     users: state.users,
-  }
-}
+  };
+};
 
-
-export default connect(mapStateToProps)( UserList);
+export default connect(mapStateToProps)(UserList);
