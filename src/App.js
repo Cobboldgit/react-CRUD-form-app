@@ -8,9 +8,9 @@ import "./App.css";
 function App() {
   const [users, setUsers] = useState([]);
 
-  function AddUser(user) {
-    setUsers([...users, user]);
-  }
+  // function AddUser(user) {
+  //   setUsers([...users, user]);
+  // }
 
   //function to delete a user
   function delectUser(userId) {
@@ -39,7 +39,7 @@ function App() {
     <>
       <div className="App">
         <div className="container">
-          <UserInput addUser={AddUser} />
+          <UserInput/>
           <UserList data={users} delectUser={delectUser} editUser={editUser} />
         </div>
       </div>
