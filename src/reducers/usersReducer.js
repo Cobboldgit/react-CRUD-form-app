@@ -5,8 +5,7 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_USER":
-      console.log(action.payload);
-      break;
+      return {...state, users: [...state.users, action.payload]}
     default:
       return state;
   }
