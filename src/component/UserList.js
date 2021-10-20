@@ -8,12 +8,7 @@ function UserList(props) {
       {users.map((user, index) => {
         return (
           <div key={index}>
-            <User
-              user={user}
-              key={user.id}
-              delectUser={props.delectUser}
-              editUser={props.editUser}
-            />
+            <User user={user} key={user.id} />
           </div>
         );
       })}
