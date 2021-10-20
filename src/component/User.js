@@ -21,7 +21,7 @@ function User(props) {
       <Button variant="primary" onClick={() => toggleModal()}>
         Edit
       </Button>
-      <Button variant="danger" onClick={() => props.delectUser(user.id)}>
+      <Button variant="danger" onClick={() => props.deleteUser(user.id)}>
         Delete
       </Button>
 
