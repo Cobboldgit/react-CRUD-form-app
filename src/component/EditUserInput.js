@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { editUser } from "../actions/userActions";
 import "../App.css";
 
 class UserInput extends Component {
@@ -11,7 +13,7 @@ class UserInput extends Component {
     };
   }
 
-handleSave(e) {
+  handleSave(e) {
     e.preventDefault();
 
     let editUser = {
@@ -30,7 +32,7 @@ handleSave(e) {
     //   email: "",
     //   gen: ""
     // });
-  };
+  }
 
   render() {
     return (
@@ -73,4 +75,8 @@ handleSave(e) {
   }
 }
 
-export default UserInput;
+const mapDispatchToProps = {
+  editUser,
+};
+
+export default connect(null, mapDispatchToProps)(UserInput);
