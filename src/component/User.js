@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
-import EditUserInput from "./EditUserInput"
+import { connect } from "react-redux";
+import { deleteUser } from "../actions/userActions";
+import EditUserInput from "./EditUserInput";
 
 function User(props) {
   const [showModal, setShowModal] = useState(false);
 
-  const user = props.user;
+  const user = props.deleteUser;
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -32,7 +34,6 @@ function User(props) {
         <Modal.Body className="modal-body">
           <EditUserInput
             user={user}
-            editUser={props.editUser}
             toggleModal={toggleModal}
           />
         </Modal.Body>
@@ -50,4 +51,8 @@ function User(props) {
   );
 }
 
-export default User;
+const mapDispatchToProps = {
+  deleteUser,
+};
+
+export default connect(null, mapDispatchToProps)(User);
