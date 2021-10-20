@@ -23,7 +23,7 @@ class UserInput extends Component {
       id: this.props.user.id,
     };
 
-    this.props.editUser(editUser, this.props.user.id);
+    this.props.editUser(this.props.user.id, editUser);
     this.props.toggleModal();
     //   this.props.addUser(user);
 

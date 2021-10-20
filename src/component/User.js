@@ -8,7 +8,7 @@ import EditUserInput from "./EditUserInput";
 function User(props) {
   const [showModal, setShowModal] = useState(false);
 
-  const user = props.deleteUser;
+  const user = props.user;
 
   const toggleModal = () => {
     setShowModal(!showModal);
