@@ -35,7 +35,7 @@ export const getAllUsers = () => {
       .collection("users")
       .onSnapshot((querySnapshot) => {
         let users = [];
-        querySnapshot.forEach((doc) => users.push(doc.data()));
+        querySnapshot.forEach(doc => users.push(doc.data()));
         dispatch({
           type: "GET_ALL_USERS",
           payload: users,
@@ -43,3 +43,9 @@ export const getAllUsers = () => {
       });
   };
 };
+
+
+
+
+
+
