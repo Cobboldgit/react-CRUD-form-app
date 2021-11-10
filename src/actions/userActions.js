@@ -15,11 +15,10 @@ export const addUser = (user) => {
 };
 
 export const deleteUser = (userId) => {
-  return (dispatch, state, { getFirestore }) => {};
-  // return {
-  //   type: "DELETE_USER",
-  //   payload: userId,
-  // };
+  return {
+    type: "DELETE_USER",
+    payload: userId,
+  };
 };
 
 export const editUser = (userId, updateUser) => {
