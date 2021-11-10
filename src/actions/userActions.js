@@ -1,8 +1,17 @@
 export const addUser = (user) => {
-  return {
-    type: "ADD_USER",
-    payload: user,
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .add(user)
+      .then(
+        () => {},
+        () => {}
+      );
   };
+  // return {
+  //   type: "ADD_USER",
+  //   payload: user,
+  // };
 };
 
 export const deleteUser = (userId) => {
@@ -18,3 +27,24 @@ export const editUser = (userId, updateUser) => {
     payload: { userId, updateUser },
   };
 };
+
+export const getAllUsers = () => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .onSnapshot((querySnapshot) => {
+        let users = [];
+        querySnapshot.forEach(doc => users.push(doc.data()));
+        dispatch({
+          type: "GET_ALL_USERS",
+          payload: users,
+        });
+      });
+  };
+};
+
+
+
+
+
+
