@@ -2,7 +2,7 @@ export const addUser = (user) => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
       .collection("users")
-      .add(user)
+      .add({ ...user, timestamp: getFirestore().FieldValue.serverTimestamp() })
       .then(
         () => {},
         () => {}
@@ -15,26 +15,43 @@ export const addUser = (user) => {
 };
 
 export const deleteUser = (userId) => {
-  return {
-    type: "DELETE_USER",
-    payload: userId,
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .doc(userId)
+      .delete()
+      .then(() => {});
   };
+  // return {
+  //   type: "DELETE_USER",
+  //   payload: userId,
+  // };
 };
 
 export const editUser = (userId, updateUser) => {
-  return {
-    type: "EDIT_USER",
-    payload: { userId, updateUser },
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .doc(userId)
+      .update(updateUser)
+      .then(() => {});
   };
+  // return {
+  //   type: "EDIT_USER",
+  //   payload: { userId, updateUser },
+  // };
 };
 
 export const getAllUsers = () => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
       .collection("users")
+      .orderBy("timestamp", "desc")
       .onSnapshot((querySnapshot) => {
         let users = [];
-        querySnapshot.forEach(doc => users.push(doc.data()));
+        querySnapshot.forEach((doc) =>
+          users.push({ ...doc.data(), id: doc.id })
+        );
         dispatch({
           type: "GET_ALL_USERS",
           payload: users,
@@ -42,9 +59,3 @@ export const getAllUsers = () => {
       });
   };
 };
-
-
-
-
-
-
