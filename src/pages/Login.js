@@ -10,7 +10,7 @@ function Login(props) {
         let email = event.target.elements.email.value
         let password = event.target.elements.password.value
 
-        props.login(email, password)
+        props.loginUser(email, password)
     }
     return (
         <div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Route } from "react-router";
+import { Redirect, Route } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, auth, ...rest }) {
   if (!auth.isLoaded) return null;
@@ -21,6 +21,7 @@ function ProtectedRoute({ component: Component, auth, ...rest }) {
   )
 }
 
+//map state to props
 const mapState = (state) => {
     return {
         auth: state.firebaseReducers.auth

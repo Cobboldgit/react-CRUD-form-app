@@ -7,7 +7,7 @@ import Register from "./pages/Register"
 import { BrowserRouter, Route } from "react-router-dom";
 import ProtectedRoute from "./component/ProtectedRoute";
 
-function App({getAllUsers}) {
+function App() {
 
 
   return (
