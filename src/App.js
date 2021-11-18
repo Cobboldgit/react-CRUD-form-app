@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from "react";
-import UserInput from "./component/UserInput";
-import UserList from "./component/UserList";
-import { connect } from "react-redux";
-import { getAllUsers } from "./actions/userActions";
+
 import "./App.css";
-// import FuncUserForm from './component/FuncUserForm';
-// import FuncUserList from './component/FuncUserList';
+
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import { BrowserRouter, Route } from "react-router-dom";
+import ProtectedRoute from "./component/ProtectedRoute";
 
 function App({getAllUsers}) {
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getAllUsers()
-  }, [])
 
   return (
-    <>
-      <div className="App">
-        <div className="container">
-          <UserInput />
-          <UserList />
-        </div>
-      </div>
-    </>
-  );
+    <BrowserRouter>
+      <ProtectedRoute exact path="/" component={Home}/>
+      <Route path="/login" component={Login}/>
+      <Route path="/register" component={Register}/>
+    </BrowserRouter>
+  )
+
+
 }
 
-const mapDispatchToProps = {
-  getAllUsers
-} 
 
-export default connect(null, mapDispatchToProps)(App);
+export default App;
