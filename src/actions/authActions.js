@@ -37,7 +37,7 @@ export const signInWithGoogle = () => {
         console.log(user);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 };
