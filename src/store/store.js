@@ -10,7 +10,7 @@ import { getFirestore, reduxFirestore } from "redux-firestore";
 import thunk from "redux-thunk";
 
 const reducers = combineReducers({
-  usersReducers: usersReducer,
+  userReducers: usersReducer,
   firebaseReducers: firebaseReducer,
 });
 
